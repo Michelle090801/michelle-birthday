@@ -216,6 +216,50 @@ color:#7d6070;
 .item.reserved input {
     opacity: 1;
 }
+  header{
+padding:90px 20px 70px;
+text-align:center;
+}
+
+header p{
+animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+  
+}
+.countdown{
+
+margin-top:40px;
+padding:18px 30px;
+
+display:inline-block;
+
+background:white;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(255,105,180,.15);
+
+font-size:22px;
+
+font-weight:600;
+
+color:#ff4fa3;
+
+letter-spacing:1px;
+
+}
   
 </style>
 
@@ -225,39 +269,65 @@ color:#7d6070;
 
 <header>
 
-<div style="font-size:70px;margin-bottom:20px;">
+<p style="
+letter-spacing:4px;
+text-transform:uppercase;
+color:#d48ab1;
+font-size:15px;
+font-weight:600;
+margin-bottom:20px;
+">
+✨ August 9, 2026 ✨
+</p>
+
+<div style="
+font-size:70px;
+margin-bottom:15px;
+">
 🎀
 </div>
 
-<h1 style="font-size:70px;">
+<h1 style="
+font-size:72px;
+line-height:1.1;
+margin-bottom:15px;
+">
 Michelle's
 <br>
 25th Birthday
 </h1>
 
-<p class="subtitle" style="margin-top:20px;font-size:26px;">
+<p style="
+font-size:24px;
+color:#b86d98;
+font-style:italic;
+margin-bottom:30px;
+">
 
-✨ Birthday Wishlist ✨
+Celebrating twenty-five years of memories,
+dreams & new beginnings.
 
 </p>
 
 <p style="
-margin-top:25px;
-font-size:22px;
-color:#c25b8f;
-line-height:1.8;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
+max-width:760px;
+margin:auto;
+font-size:21px;
+line-height:1.9;
+color:#8d5c7d;
 ">
 
-Thank you for taking a moment to celebrate my birthday with me. 💕<br><br>
+Welcome to my birthday wishlist! 🤍
 
-This wishlist is simply a collection of little things I'd genuinely love someday.
-Please don't ever feel obligated to buy me anything—your love, support, and presence mean far more than any gift. 🤍✨
+I'm so grateful you're here and taking a moment to celebrate this special milestone with me.
+
+Every item on this list is something I've genuinely fallen in love with, but please remember that your love, support, and presence will always mean more than any gift.
+
+Thank you for being part of this beautiful chapter of my life. ✨🎀
 
 </p>
-
+<div id="countdown" class="countdown"></div> 
+  
 </header>
   
   <section class="note">
@@ -659,6 +729,32 @@ async function loadWishlist() {
   });
 
 });
+  const birthday = new Date("August 9, 2026 00:00:00");
+
+function updateCountdown() {
+
+  const now = new Date();
+  const distance = birthday - now;
+
+  if (distance <= 0) {
+    document.getElementById("countdown").innerHTML =
+"🎉 Happy Birthday Michelle! 🎂";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+"🎂 " + days + " Days • " + hours + " Hours • " + minutes + " Minutes • " + seconds + " Seconds";
+
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+  
 </script>
 
 </body>
